@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AAAOClean Services</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>AAAOClean Services</h1>
+    <p>Your trusted partner in home and office cleaning</p>
+  </header>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are a professional cleaning service company offering reliable, affordable, and AAAO clean services to homes and businesses.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Cleaning Services</h2>
+    <ul>
+      <li><strong>Standard Cleaning:</strong> General home maintenance - $25/hr</li>
+      <li><strong>Deep Cleaning:</strong> Thorough cleaning for neglected spaces - $40/hr</li>
+      <li><strong>Move-In/Move-Out Cleaning:</strong> Perfect for rentals and sales - $60/hr</li>
+      <li><strong>Office Cleaning:</strong> Clean and professional workspaces - $35/hr</li>
+    </ul>
+  </section>
+
+  <section id="booking">
+    <h2>Book a Cleaning</h2>
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <select id="service" required>
+        <option value="" disabled selected>Select a service</option>
+        <option value="25">Standard Cleaning</option>
+        <option value="40">Deep Cleaning</option>
+        <option value="60">Move-In/Move-Out</option>
+        <option value="35">Office Cleaning</option>
+      </select>
+      <input type="number" id="hours" placeholder="Number of Hours" min="1" required>
+      <button type="submit">Calculate Cost</button>
+    </form>
+
+    <div id="summary" class="hidden">
+      <h3>Booking Summary</h3>
+      <p><strong>Name:</strong> <span id="summaryName"></span></p>
+      <p><strong>Service Rate:</strong> $<span id="summaryRate"></span>/hr</p>
+      <p><strong>Hours:</strong> <span id="summaryHours"></span></p>
+      <p><strong>Total Cost:</strong> $<span id="summaryTotal"></span></p>
+    </div>
+  </section>
+
+  <section id="contact">
+  <h2>Contact Us</h2>
+  <div class="div">Email: abbas.aloutta65@gmail.com </div>
+  Phone: +961 76648808
+ 
+  <p>
+    Instagram: 
+    <a href="https://instagram.com/sparkleclean" target="_blank">@AAAO</a>
+  </p>
+</section>
+
+  <footer>
+    <p>© 2025 AAAOClean Services. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
