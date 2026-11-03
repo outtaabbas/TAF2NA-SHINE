@@ -199,5 +199,17 @@ box.innerHTML=`<b>${name}</b> - ${txt}<br>Total: <b>$${total.toFixed(2)}</b><br>
 box.scrollIntoView({behavior:'smooth'});
 });
 </script>
+  <button id="music-btn" style="position:fixed;top:20px;right:20px;z-index:999">♪</button>
+<audio id="bgMusic" loop>
+  <source src="piano-soft.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.getElementById('music-btn').onclick = function(){
+  var music = document.getElementById('bgMusic');
+  music.volume = 0.15;
+  music.paused ? music.play() : music.pause();
+}
+</script>
 </body>
 </html>
