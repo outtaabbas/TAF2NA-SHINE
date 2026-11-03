@@ -3,68 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AAAOClean Services</title>
-  <link rel="stylesheet" href="style.css">
+  <title>CrystalShine Cleaning Co.</title>
+  <link rel="stylesheet" href="../css/cleang.css">
 </head>
 <body>
 
-  <header>
-    <h1>AAAOClean Services</h1>
-    <p>Your trusted partner in home and office cleaning</p>
-  </header>
+  <nav>
+    <h1>TAF2NA SHINE</h1>
+    <p>Sparkle starts here ✨</p>
+  </nav>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We are a professional cleaning service company offering reliable, affordable, and AAAO clean services to homes and businesses.</p>
+  <section class="hero">
+    <h2>Professional Home & Office Cleaning</h2>
+    <p>Reliable • Affordable • Always On Time</p>
+    <a href="#contact" class="cta-btn">Get in Touch</a>
   </section>
 
-  <section id="services">
-    <h2>Our Cleaning Services</h2>
-    <ul>
-      <li><strong>Standard Cleaning:</strong> General home maintenance - $25/hr</li>
-      <li><strong>Deep Cleaning:</strong> Thorough cleaning for neglected spaces - $40/hr</li>
-      <li><strong>Move-In/Move-Out Cleaning:</strong> Perfect for rentals and sales - $60/hr</li>
-      <li><strong>Office Cleaning:</strong> Clean and professional workspaces - $35/hr</li>
-    </ul>
-  </section>
-
-  <section id="booking">
-    <h2>Book a Cleaning</h2>
-    <form id="bookingForm">
-      <input type="text" id="name" placeholder="Full Name" required>
-      <select id="service" required>
-        <option value="" disabled selected>Select a service</option>
-        <option value="25">Standard Cleaning</option>
-        <option value="40">Deep Cleaning</option>
-        <option value="60">Move-In/Move-Out</option>
-        <option value="35">Office Cleaning</option>
-      </select>
-      <input type="number" id="hours" placeholder="Number of Hours" min="1" required>
-      <button type="submit">Calculate Cost</button>
-    </form>
-
-    <div id="summary" class="hidden">
-      <h3>Booking Summary</h3>
-      <p><strong>Name:</strong> <span id="summaryName"></span></p>
-      <p><strong>Service Rate:</strong> $<span id="summaryRate"></span>/hr</p>
-      <p><strong>Hours:</strong> <span id="summaryHours"></span></p>
-      <p><strong>Total Cost:</strong> $<span id="summaryTotal"></span></p>
+  <section class="services">
+    <h3>What We Do</h3>
+    <div class="card-list">
+      <div class="card">🏠 Home Cleaning</div>
+      <div class="card">🧽 Deep Cleaning</div>
+      <div class="card">🏢 Office Spaces</div>
+      <div class="card">🚚 Move-In/Out</div>
     </div>
   </section>
 
-  <section id="contact">
-  <h2>Contact Us</h2>
-  <div class="div">Email: abbas.aloutta65@gmail.com </div>
-  Phone: +961 76648808
- 
-  <p>
-    Instagram: 
-    <a href="https://instagram.com/sparkleclean" target="_blank">@AAAO</a>
-  </p>
-</section>
+  <section class="quote">
+    <h3>Get a Quick Quote</h3>
+    <form id="quoteForm">
+      <input type="text" id="clientName" placeholder="Your NAME
+"text" id="clientName" placeholder="Your Name" required>
+      <select id="serviceType" required>
+        <option value="" disabled selected>Select Service</option>
+        <option value="25">Home Cleaning - $5/hr</option>
+        <option value="40">Deep Cleaning - $6/hr</option>
+        <option value="35">Office Cleaning - $5/hr</option>
+        <option value="50">Move-In/Out - $8/hr</option>
+      </select>
+      <input type="number" id="hoursNeeded" placeholder="Hours Needed" min="1" required>
+      <button type="submit">Calculate Quote</button>
+    </form>
+
+    <div id="quoteResult" class="hidden">
+      <p><strong>Name:</strong> <span id="quoteName"></span></p>
+      <p><strong>Service Rate:</strong> $<span id="quoteRate"></span>/hr</p>
+      <p><strong>Hours:</strong> <span id="quoteHours"></span></p>
+      <p><strong>Total Cost:</strong> $<span id="quoteTotal"></span></p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h3>Contact Us</h3>
+    <p>Email: Abbas.aloutta65@gmail.com</p>
+    <p>Phone: ‪+961 76950998
+                      <DIV>+961 03950998</DIV>‬</p>
+    <!-- <p>  
+      Instagram: 
+      <a href="https://instagram.com/crystalshinecleaning" target="_blank">@crystalshinecleaning</a>
+    </p> -->
+  </section>
 
   <footer>
-    <p>© 2025 AAAOClean Services. All rights reserved.</p>
+    <p>©  TAF2NA SHINE Cleaning Co. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
