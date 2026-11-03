@@ -7,34 +7,41 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Segoe UI,sans-serif;background:#f7fdfd;color:#333;line-height:1.6}
-nav{background:#00a8a8;color:#fff;padding:22px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+nav{background:#00a8a8;color:#fff;padding:22px;text-align:center}
 nav h1{letter-spacing:3px;font-size:1.9rem}
 .hero{background:linear-gradient(135deg,#e0f7f9,#c8f0f2);text-align:center;padding:65px 20px}
-.hero h2{color:#007070;font-size:2rem;margin-bottom:8px}
-.cta-btn{display:inline-block;margin-top:18px;background:#00a8a8;color:#fff;padding:12px 28px;text-decoration:none;border-radius:30px;font-weight:700;transition:.3s}
+.hero h2{color:#007070;font-size:2rem}
+.cta-btn{display:inline-block;margin-top:18px;background:#00a8a8;color:#fff;padding:12px 28px;text-decoration:none;border-radius:30px;font-weight:700;transition:.3s;cursor:pointer;border:none}
 .cta-btn:hover{background:#008b8b;transform:translateY(-2px)}
 .services{padding:45px 20px;max-width:1000px;margin:auto}
 .services h3,.quote h3,.contact h3{text-align:center;color:#007070;font-size:1.6rem;margin-bottom:22px}
 .card-list{display:flex;flex-wrap:wrap;gap:16px}
-.card{background:#fff;padding:22px;flex:1 1 calc(50% - 16px);border-radius:14px;text-align:center;font-weight:600;border:1px solid #e9e9e9;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:.3s}
-.card:hover{transform:translateY(-5px);border-color:#00a8a8}
+.card{background:#fff;padding:22px;flex:1 1 calc(50% - 16px);border-radius:14px;text-align:center;font-weight:600;border:1px solid #e9e9e9;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:.3s;cursor:pointer}
+.card:hover{transform:translateY(-5px);border-color:#00a8a8;box-shadow:0 8px 20px rgba(0,168,168,.15)}
+.card small{display:block;margin-top:6px;color:#00a8a8;font-weight:400;font-size:.85rem}
 .quote{background:#f0fcfc;padding:45px 20px}
 form{max-width:430px;margin:auto;background:#fff;padding:26px;border-radius:16px;box-shadow:0 5px 22px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:13px}
 input,select{padding:13px;border:1px solid #ccc;border-radius:9px;font-size:1rem;outline:none}
-input:focus,select:focus{border-color:#00a8a8}
 button{padding:13px;border:none;border-radius:9px;background:#00a8a8;color:#fff;font-weight:700;font-size:1rem;cursor:pointer}
-button:hover{background:#008b8b}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:999;padding:20px}
+.modal.active{display:flex}
+.modal-box{background:#fff;max-width:500px;width:100%;border-radius:18px;padding:28px;position:relative;animation:pop .3s ease;max-height:85vh;overflow-y:auto}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-box h4{color:#007070;font-size:1.35rem;margin-bottom:10px}
+.modal-box .price{background:#e6fefe;padding:10px 14px;border-radius:10px;font-weight:700;color:#007070;margin:12px 0}
+.modal-box ul{margin:10px 0 12px 18px;line-height:1.9}
+.modal-box .ar{color:#555;background:#fafafa;padding:10px;border-radius:8px;margin-top:10px;font-size:.95rem;border-right:3px solid #00a8a8}
+.close{position:absolute;top:12px;right:16px;font-size:1.6rem;cursor:pointer;color:#999}
 #quoteResult{max-width:430px;margin:22px auto 0;background:#fff;padding:20px;border-radius:12px;border-left:5px solid #00a8a8;line-height:2}
 .hidden{display:none}
 .contact{padding:45px 20px;background:#e6fefe;text-align:center}
 .contact a{color:#007070;font-weight:700;text-decoration:none}
-.contact a:hover{text-decoration:underline}
 footer{background:#222;color:#bbb;text-align:center;padding:18px;font-size:.9rem}
-@media(max-width:600px){.card{flex:1 1 100%}.hero h2{font-size:1.5rem}}
+@media(max-width:600px){.card{flex:1 1 100%}}
 </style>
 </head>
 <body>
-<nav><h1>TAF2NA SHINE</h1><p>Sparkle starts here ✨</p></nav>
+<nav><h1>TAF2NA SHINE</h1><p>Sparkle starts here ✨ نظافة بتلمع</p></nav>
 
 <section class="hero">
 <h2>Professional Home & Office Cleaning</h2>
@@ -43,27 +50,38 @@ footer{background:#222;color:#bbb;text-align:center;padding:18px;font-size:.9rem
 </section>
 
 <section class="services">
-<h3>What We Do</h3>
+<h3>What We Do - خدماتنا</h3>
 <div class="card-list">
-<div class="card">🏠 Home Cleaning</div>
-<div class="card">🧽 Deep Cleaning</div>
-<div class="card">🏢 Office Spaces</div>
-<div class="card">🚚 Move-In / Out</div>
+<div class="card" onclick="openModal('home')"><div>🏠 Home Cleaning</div><small>Click for details → اضغط للتفاصيل</small></div>
+<div class="card" onclick="openModal('deep')"><div>🧽 Deep Cleaning</div><small>Click for details → تنظيف عميق</small></div>
+<div class="card" onclick="openModal('office')"><div>🏢 Office Spaces</div><small>Click for details → مكاتب</small></div>
+<div class="card" onclick="openModal('move')"><div>🚚 Move-In / Out</div><small>Click for details → انتقال</small></div>
 </div>
 </section>
+
+<div id="modal" class="modal" onclick="closeModal()">
+<div class="modal-box" onclick="event.stopPropagation()">
+<span class="close" onclick="closeModal()">&times;</span>
+<h4 id="mTitle"></h4>
+<div id="mPrice" class="price"></div>
+<ul id="mList"></ul>
+<div id="mAr" class="ar"></div>
+<a id="mBtn" class="cta-btn" style="margin-top:16px;width:100%;text-align:center;display:block">Book This Service - احجز الآن</a>
+</div>
+</div>
 
 <section class="quote">
 <h3>Get a Quick Quote</h3>
 <form id="quoteForm">
-<input type="text" id="clientName" placeholder="Your Name" required>
+<input type="text" id="clientName" placeholder="Your Name / اسمك" required>
 <select id="serviceType" required>
-<option value="" disabled selected>Select Service</option>
+<option value="" disabled selected>Select Service / اختر الخدمة</option>
 <option value="5">Home Cleaning - $5/hr</option>
 <option value="6">Deep Cleaning - $6/hr</option>
 <option value="5">Office Cleaning - $5/hr</option>
 <option value="8">Move-In/Out - $8/hr</option>
 </select>
-<input type="number" id="hoursNeeded" placeholder="Hours Needed" min="1" required>
+<input type="number" id="hoursNeeded" placeholder="Hours Needed / عدد الساعات" min="1" required>
 <button type="submit">Calculate Quote</button>
 </form>
 <div id="quoteResult" class="hidden">
@@ -75,15 +93,29 @@ footer{background:#222;color:#bbb;text-align:center;padding:18px;font-size:.9rem
 </section>
 
 <section id="contact" class="contact">
-<h3>Contact Us</h3>
+<h3>Contact Us - تواصل معنا</h3>
 <p>Email: <a href="mailto:Abbas.aloutta65@gmail.com">Abbas.aloutta65@gmail.com</a></p>
 <p>Phone: <a href="tel:+96176950998">+961 76 950 998</a> | <a href="tel:+96103950998">+961 03 950 998</a></p>
 <p style="margin-top:18px"><a href="https://wa.me/96176950998" target="_blank" class="cta-btn" style="background:#25D366">💬 Chat on WhatsApp</a></p>
 </section>
-
-<footer><p>© 2026 TAF2NA SHINE Cleaning Co.</p></footer>
+<footer><p>© 2026 TAF2NA SHINE - Jedeide, Mount Lebanon</p></footer>
 
 <script>
+const services={
+home:{title:"🏠 Home Cleaning - تنظيف منازل",price:"$5/hr - يبدأ من 5$ بالساعة",list:["Dusting & vacuuming all rooms","Kitchen & bathroom cleaning","Mopping floors & windows","Bed making & trash removal"],ar:"تنظيف منزلي أسبوعي أو كل أسبوعين. منخلي بيتك يلمع، من الجلي للمطبخ والحمامات. مثالي للعائلات المشغولة."},
+deep:{title:"🧽 Deep Cleaning - تنظيف عميق",price:"$6/hr - الأكثر طلباً!",list:["Everything in Home + Inside fridge & oven","Bathroom descaling & grout deep clean","Under furniture, curtains & behind","Windows inside-out & balconies"],ar:"تنظيف عميق لكل زاوية. مننضف البراد من جوا، الفرن، ورا التخت والكنبايات، والكلس بالحمام. بينعمل مرة بالشهر."},
+office:{title:"🏢 Office Cleaning - تنظيف مكاتب",price:"$5/hr - After hours available",list:["Desks, meeting rooms, reception","Restrooms & kitchenette sanitized","Floor cleaning & trash removal","Disinfection for healthy workplace"],ar:"مكتب نظيف = شغل أحسن. منجي بعد الدوام أو قبله، ما منزعج الموظفين. تنظيف يومي أو أسبوعي."},
+move:{title:"🚚 Move-In / Out - تنظيف انتقال",price:"$8/hr - بيت فاضي كامل",list:["Full empty house deep clean","Walls, windows, balconies washed","Kitchen appliances inside-out","Ready for new tenant - deposit back!"],ar:"نقلت أو رح تنقل؟ مننضف البيت الفاضي من فوق لتحت، حيطان وشبابيك وبرندات، ترجع تاخد التأمين كامل."}
+};
+function openModal(type){
+const s=services[type];
+document.getElementById('mTitle').textContent=s.title;
+document.getElementById('mPrice').textContent=s.price;
+document.getElementById('mList').innerHTML=s.list.map(i=>`<li>${i}</li>`).join('');
+document.getElementById('mAr').textContent=s.ar;
+document.getElementById('modal').classList.add('active');
+}
+function closeModal(){document.getElementById('modal').classList.remove('active')}
 document.getElementById('quoteForm').addEventListener('submit',function(e){
 e.preventDefault();
 const name=document.getElementById('clientName').value.trim();
@@ -100,14 +132,9 @@ document.getElementById('quoteTotal').textContent=total.toFixed(2);
 const res=document.getElementById('quoteResult');
 res.classList.remove('hidden');
 let btn=document.getElementById('waBtn');
-if(!btn){
-btn=document.createElement('a');
-btn.id='waBtn';btn.className='cta-btn';btn.style.background='#25D366';btn.style.marginTop='15px';btn.style.display='inline-block';btn.target='_blank';
-res.appendChild(btn);
-}
-const msg=`Hello TAF2NA SHINE!%0AName: ${name}%0AService: ${text}%0AHours: ${hours}%0ATotal: $${total.toFixed(2)}`;
-btn.href=`https://wa.me/96176950998?text=${msg}`;
-btn.textContent='📱 Send Quote to WhatsApp';
+if(!btn){btn=document.createElement('a');btn.id='waBtn';btn.className='cta-btn';btn.style.background='#25D366';btn.style.marginTop='15px';btn.style.display='inline-block';btn.target='_blank';res.appendChild(btn);}
+btn.href=`https://wa.me/96176950998?text=Hello%20TAF2NA%20SHINE!%0AName:%20${name}%0A${text}%0AHours:${hours}%0ATotal:$${total.toFixed(2)}`;
+btn.textContent='📱 Send to WhatsApp';
 res.scrollIntoView({behavior:'smooth'});
 });
 </script>
