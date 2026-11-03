@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -157,4 +157,4 @@ footer {
 @media (max-width: 600px) {
   .card { flex: 1 1 100%; }
   .hero h2 { font-size: 1.5rem; }
-}
+} */
