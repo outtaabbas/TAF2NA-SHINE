@@ -199,19 +199,65 @@ box.innerHTML=`<b>${name}</b> - ${txt}<br>Total: <b>$${total.toFixed(2)}</b><br>
 box.scrollIntoView({behavior:'smooth'});
 });
 </script>
- <button id="music-btn" style="position:fixed;top:20px;right:20px;z-index:9999;background:white;border-radius:50%;width:45px;height:45px;border:1px solid #ddd;cursor:pointer;font-size:18px">♪</button>
+<!-- YOUTUBE CLASSIC BACKGROUND MUSIC -->
+<button id="music-btn" style="position:fixed;bottom:25px;right:25px;z-index:99999;background:#0f2e2e;color:#fff;border-radius:50%;width:56px;height:56px;border:2px solid #00a8a8;cursor:pointer;font-size:22px;box-shadow:0 6px 20px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center">♪</button>
 
-<audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3" type="audio/mpeg">
-</audio>
+<!-- Hidden YouTube Player -->
+<div style="position:fixed;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none">
+  <div id="yt-player"></div>
+</div>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
-document.getElementById('music-btn').onclick = function(){
-  var music = document.getElementById('bgMusic');
-  music.volume = 0.12;
-  if(music.paused){ music.play(); this.innerHTML='♫'; } 
-  else { music.pause(); this.innerHTML='♪'; }
+let player;
+let isPlaying = false;
+const btn = document.getElementById('music-btn');
+
+function onYouTubeIframeAPIReady(){
+  player = new YT.Player('yt-player', {
+    height: '0',
+    width: '0',
+    videoId: '36UPt8kC64M',
+    playerVars: {
+      autoplay: 0,
+      loop: 1,
+      playlist: '36UPt8kC64M',
+      controls: 0,
+      mute: 0,
+      playsinline: 1
+    },
+    events: {
+      onReady: (e)=>{
+        e.target.setVolume(18); // wate w classy 18%
+        // jareb ydour la7alo
+        setTimeout(()=>{ tryPlay(); }, 1000);
+      },
+      onStateChange: (e)=>{
+        if(e.data === YT.PlayerState.PLAYING){ isPlaying=true; btn.textContent='🔊'; btn.style.background='#00a8a8'; }
+        if(e.data === YT.PlayerState.PAUSED){ isPlaying=false; btn.textContent='♪'; btn.style.background='#0f2e2e'; }
+      }
+    }
+  });
 }
+
+function tryPlay(){
+  if(player && player.playVideo){
+    player.playVideo();
+    player.setVolume(30);
+  }
+}
+
+btn.onclick = (e)=>{
+  e.stopPropagation();
+  if(!player) return;
+  if(isPlaying){ player.pauseVideo(); }
+  else { tryPlay(); }
+};
+
+// Bidour la7alo awal ma ya3mel scroll/click - hayda l 7al l wa7id li Chrome bismah fih
+['click','touchstart','scroll'].forEach(ev=>{
+  document.addEventListener(ev, tryPlay, {once:true});
+});
 </script>
 </script>
 </body>
